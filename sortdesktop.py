@@ -1,6 +1,6 @@
 import managesortdirs
 import os
-import watch_desktop
+import watchdesktop
 import threading
 from constants import *
 
@@ -39,7 +39,7 @@ else:
 
 print(INFO)
 
-watch = watch_desktop.WatchDesktop(sort.get_dict())
+watch = watchdesktop.WatchDesktop(sort.get_dict())
 watch.start()
 main = threading.Thread(target=main_loop)
 main.start()
