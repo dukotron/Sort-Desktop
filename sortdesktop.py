@@ -4,6 +4,9 @@ import watch_desktop
 import threading
 from constants import *
 
+def help_me():
+    print(HELP)
+
 def main_loop():
     while True:
         cmd = input(">> ")
@@ -23,6 +26,8 @@ def main_loop():
             break
         elif (cmd.lower() == "sortnow"):
             watch.manual_sort(False)
+        elif (cmd.lower() == "help"):
+            help_me()
         else:
             print(NO_CMD)
 
