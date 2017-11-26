@@ -7,4 +7,7 @@ PATHS_NO = "Paths file not found, will be added once you add prefix-location pai
 INFO = "If you are stuck type 'help' and press the enter key."
 NO_CMD = "No command found"
 PREFIX_NO = "Wrong prefix format!"
+PREFIX_NO_EX = "Prefix doesn't exist!"
 LOC_NO = "Wrong location format!"
+ADDED = "Prefix/location pair added to sorting."
+REMOVED = "Prefix/location pair removed from sorting."

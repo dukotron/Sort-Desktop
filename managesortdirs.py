@@ -10,14 +10,20 @@ class ManageSortDirs:
 
     def add_prefix_dir_pair(self, prefix, location):
         if (re.match("^[\w\d_-]*$", prefix) is False or prefix[-1] != '_'):
-            print(PREFIX_NO)
-            return
+            return PREFIX_NO
 
         if (os.path.isdir(location) is False):
-            print(LOC_NO)
-            return
+            return LOC_NO
 
         self.prefix_loc_dict[prefix] = location
+        return ADDED
+
+    def remove_prefix_dir_pair(self, pref):
+        for prefix, location in self.prefix_loc_dict.items():
+            if (pref == prefix):
+                del self.prefix_loc_dict[pref]
+                return REMOVED
+        return PREFIX_NO_EX
 
     def save_dict(self):
         pickle.dump(self.prefix_loc_dict, open(FILE_NAME, "wb"))

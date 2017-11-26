@@ -11,13 +11,18 @@ def main_loop():
         if (cmd == ""):
             continue
         elif (cmd.lower().split()[0] == "addpair"):
-            sort.add_prefix_dir_pair(cmd.split()[1], cmd.split(' ', 2)[2])
+            print(sort.add_prefix_dir_pair(cmd.split()[1], cmd.split(' ', 2)[2]))
+            sort.save_dict()
+        elif (cmd.lower().split()[0] == "removepair"):
+            print(sort.remove_prefix_dir_pair(cmd.split()[1]))
             sort.save_dict()
         elif (cmd.lower() == "displaypairs"):
             print(sort)
-        elif (cmd.lower() == "exit"):
-            watch.stop()
+        elif (cmd.lower() == "quit"):
+            watch.cancel()
             break
+        elif (cmd.lower() == "sortnow"):
+            watch.manual_sort(False)
         else:
             print(NO_CMD)
 
