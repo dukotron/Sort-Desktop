@@ -1,32 +1,38 @@
 import managesortdirs
 import os
+import watch_desktop
+import threading
+from constants import *
 
-def display_help():
-    print()
+def main_loop():
+    while True:
+        cmd = input(">> ")
+
+        if (cmd == ""):
+            continue
+        elif (cmd.lower().split()[0] == "addpair"):
+            sort.add_prefix_dir_pair(cmd.split()[1], cmd.split(' ', 2)[2])
+            sort.save_dict()
+        elif (cmd.lower() == "displaypairs"):
+            print(sort)
+        elif (cmd.lower() == "exit"):
+            watch.stop()
+            break
+        else:
+            print(NO_CMD)
 
 sort = managesortdirs.ManageSortDirs()
-
-print("Welcome to Sort Desktop.")
+print(WELCOME)
 
 if (sort.check_path_file()):
     sort.load_dict()
-    print("Loaded paths file.")
+    print(PATHS_YES)
 else:
-    print("Paths file not found, will be added once you add prefix-location pairs.")
+    print(PATHS_NO)
 
-print("If you are stuck type 'help' and press the enter key.")
+print(INFO)
 
-while True:
-    cmd = input(">> ")
-
-    if (cmd == ""):
-        continue
-    elif (cmd.lower().split()[0] == "addpair"):
-        sort.add_prefix_dir_pair(cmd.split()[1], cmd.split(' ', 2)[2])
-        sort.save_dict()
-    elif (cmd.lower() == "displaypairs"):
-        print(sort)
-    elif (cmd.lower() == "exit"):
-        break
-    else:
-        print("No command found")
+watch = watch_desktop.WatchDesktop(sort.get_dict())
+watch.start()
+main = threading.Thread(target=main_loop)
+main.start()
