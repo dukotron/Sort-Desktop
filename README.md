@@ -1,6 +1,7 @@
 # Sort-Desktop
-A small console app in python that will help me keep my desktop clean.
+A small console app in python that helps me keep my desktop clean.
 Keep in mind that for whatever reason it might work weird when ran in IDLE, I suggest running by double click or trough cmd.
+
 
 If someone by any chance comes across this app and has things to say:
 
